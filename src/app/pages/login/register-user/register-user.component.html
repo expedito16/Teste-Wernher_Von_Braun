@@ -1,0 +1,67 @@
+<section class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class=" card p-4 shadow-lg rounded">
+    <h2 class="mb-4 text-center">Novo usuário</h2>
+    <form [formGroup]="newUserForm">
+      <div class="mb-3">
+        <label class="form-label" [class.text-danger]="newUserForm.hasError('required', 'name') && newUserForm.controls['name'].dirty">Nome*</label>
+        <input type="text" class="form-control" placeholder="Digite seu nome..." formControlName="name"
+          [class.is-invalid]="newUserForm.hasError('required', 'name') && newUserForm.controls['name'].dirty"
+        >
+        <div
+          *ngIf="newUserForm.hasError('required', 'name') && newUserForm.controls['name'].dirty"
+          class="text-danger mb-1 mt-1"
+        >
+          Nome é obrigatório!!
+        </div>
+        <div
+          *ngIf="!newUserForm.controls['name'].errors?.['minLength'] && newUserForm.controls['name'].errors && newUserForm.controls['name'].touched"
+          class="text-danger mb-3 mt-1"
+        >
+          Digite pelo menos 5 digitos!!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" [class.is-invalid]="newUserForm.hasError('required', 'email') && newUserForm.controls['email'].dirty">Email*</label>
+        <input type="email" class="form-control" placeholder="Digite seu email..." formControlName="email"
+          [class.is-invalid]="newUserForm.hasError('required', 'email') && newUserForm.controls['email'].dirty"
+        >
+        <div
+          *ngIf="newUserForm.hasError('required', 'email') && newUserForm.controls['email'].dirty"
+          class="text-danger mb-1 mt-1"
+        >
+          Email é obrigatório!!!
+        </div>
+        <div
+          *ngIf="newUserForm.controls['email'].invalid && newUserForm.controls['email'].dirty"
+          class="text-danger"
+        >
+          Email inválido!!
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label" [class.text-danger]="newUserForm.hasError('required', 'password') && newUserForm.controls['password'].dirty">Senha*</label>
+        <input type="password" class="form-control" placeholder="Digite sua senha..." formControlName="password"
+          [class.is-invalid]="newUserForm.hasError('required', 'password') && newUserForm.controls['password'].dirty"
+        >
+        <div
+          *ngIf="newUserForm.hasError('required', 'password') && newUserForm.controls['password'].dirty"
+          class="text-danger mb-1 mt-1"
+        >
+          Senha é obrigatório!!!
+        </div>
+        <div
+          *ngIf="!newUserForm.controls['password'].errors?.['minLength'] && newUserForm.controls['password'].errors && newUserForm.controls['password'].touched"
+          class="text-danger mb-3 mt-1"
+        >
+          Digite pelo menos 6 digitos!!
+        </div>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <button type="button" class="btn btn-danger me-md-2 mb-2 mb-md-0" (click)="back()">Cancelar</button>
+        <button type="submit" class="btn btn-success" [disabled]="newUserForm.invalid" (click)="createUser()">Criar</button>
+      </div>
+    </form>
+  </div>
+</section>
