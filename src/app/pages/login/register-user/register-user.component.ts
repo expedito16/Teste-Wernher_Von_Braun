@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-register-user',
@@ -9,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterUserComponent implements OnInit {
 newUserForm!: FormGroup;
-isFormSubmitted = false;
+isLoading = false;
+listUsers: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -28,22 +31,37 @@ isFormSubmitted = false;
     });
   }
 
-  get formControls() {
-    return this.newUserForm.controls;
-  }
-
   back() {
+    this.isLoading = true;
     this.router.navigate(['']);
+    this.isLoading = false;
   }
 
   createUser() {
-    this.isFormSubmitted = true;
+    if (this.newUserForm.valid) {
+      this.isLoading = true;
 
-    if (this.newUserForm.invalid) {
-      return;
+      this.loginService.listUsers().subscribe(data => {
+        this.listUsers = data;
+        const userEmail = this.newUserForm.controls['email'].value;
+        const listEmail = this.listUsers.filter((dados) => dados.email);
+        const userExist = listEmail.some(user => user.email === userEmail);
+
+        if (userExist) {
+          alert("Email já existe, digite um novo email!!");
+        } else {
+          const name = this.newUserForm.get('name')!.value;
+          const email = this.newUserForm.get('email')!.value;
+          const password = this.newUserForm.get('password')!.value;
+          const newUser = { name: name, email: email, password: password };
+
+          this.loginService.createNewUser(newUser).subscribe(() => {
+            this.router.navigate(['']);
+            this.isLoading = false;
+          });
+        }
+      });
     }
-
-    // Lógica para criar um novo usuário
-    console.log(this.newUserForm.value);
   }
+
 }

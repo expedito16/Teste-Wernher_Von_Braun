@@ -63,5 +63,11 @@
         <button type="submit" class="btn btn-success" [disabled]="newUserForm.invalid" (click)="createUser()">Criar</button>
       </div>
     </form>
+
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
   </div>
 </section>

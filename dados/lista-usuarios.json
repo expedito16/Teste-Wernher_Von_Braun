@@ -1,0 +1,22 @@
+{
+  "lista-usuarios": [
+    {
+      "id": 1,
+      "name": "Expedito Neto",
+      "email": "expedito@gmail.com",
+      "password": "teste123"
+    },
+    {
+      "id": 2,
+      "name": "Marcela Freire",
+      "email": "marcela@gmail.com",
+      "password": "teste123"
+    },
+    {
+      "id": "5363",
+      "name": "Pedro Lucas",
+      "email": "pedro@gmail.com",
+      "password": "123456"
+    }
+  ]
+}
