@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-lg-6">
+      <div class="card rounded-3 shadow-lg p-4">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-5">Novo Dispositivo</h3>
+          <form [formGroup]="newDeviceForm">
+            <div class="mb-3">
+              <label class="form-label" [class.text-danger]="newDeviceForm.hasError('required', 'deviceName') && newDeviceForm.controls['deviceName'].dirty">Nome do dispositivo*:</label>
+              <input type="text" class="form-control" formControlName="deviceName"
+              [class.is-invalid]="newDeviceForm.hasError('required', 'deviceName') && newDeviceForm.controls['deviceName'].dirty">
+              <div
+                *ngIf="newDeviceForm.hasError('required', 'deviceName') && newDeviceForm.controls['deviceName'].dirty"
+                class="text-danger mb-1 mt-1"
+              >
+                Nome do dispositivo é obrigatório!!!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" [class.text-danger]="newDeviceForm.hasError('required', 'model') && newDeviceForm.controls['model'].dirty">Modelo*:</label>
+              <input type="text" class="form-control" formControlName="model"
+              [class.is-invalid]="newDeviceForm.hasError('required', 'model') && newDeviceForm.controls['model'].dirty">
+              <div
+                *ngIf="newDeviceForm.hasError('required', 'model') && newDeviceForm.controls['model'].dirty"
+                class="text-danger mb-1 mt-1"
+              >
+                Modelo é obrigatório!!!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" [class.text-danger]="newDeviceForm.hasError('required', 'deviceManufacturer') && newDeviceForm.controls['deviceManufacturer'].dirty">Fabricante do dispositivo*:</label>
+              <input type="text" class="form-control" formControlName="deviceManufacturer"
+              [class.is-invalid]="newDeviceForm.hasError('required', 'deviceManufacturer') && newDeviceForm.controls['deviceManufacturer'].dirty">
+              <div
+                *ngIf="newDeviceForm.hasError('required', 'deviceManufacturer') && newDeviceForm.controls['deviceManufacturer'].dirty"
+                class="text-danger mb-1 mt-1"
+              >
+                Fabricante do dispositivo é obrigatório!!!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" [class.text-danger]="newDeviceForm.hasError('required', 'description') && newDeviceForm.controls['description'].dirty">Descrição*:</label>
+              <textarea class="form-control" formControlName="description" [class.is-invalid]="newDeviceForm.hasError('required', 'description') && newDeviceForm.controls['description'].dirty"></textarea>
+              <div
+                *ngIf="newDeviceForm.hasError('required', 'description') && newDeviceForm.controls['description'].dirty"
+                class="text-danger mb-1 mt-1"
+              >
+                Descrição é obrigatório!!!
+            </div>
+            </div>
+            <div class="text-center mt-5">
+              <button type="button" class="btn btn-danger me-2" (click)="back()">Voltar</button>
+              <button type="submit" class="btn btn-success position-relative" [disabled]="newDeviceForm.invalid" (click)="save()">
+                <span *ngIf="!isLoading">Cadastrar</span>
+                <div class="clearfix">
+                  <div class="float-end" role="status">
+                  <span *ngIf="isLoading" class="spinner-border spinner-border-md" aria-hidden="true"></span>
+                </div>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
