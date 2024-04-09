@@ -2,21 +2,49 @@
   <div class="card p-5 shadow-lg rounded">
     <h2 class="mb-2 text-center">Login</h2>
     <p class="mb-4 text-center"><strong>Seja bem vindo!!</strong></p>
-    <form>
+    <form [formGroup]="loginForm">
       <div class="mb-3">
         <label for="username" class="form-label">Email*</label>
-        <input type="text" class="form-control" id="username" placeholder="Digite seu email">
+        <input type="text" class="form-control" id="username" placeholder="Digite seu email..." formControlName="email">
+        <div
+          *ngIf="loginForm.hasError('required', 'email') && loginForm.controls['email'].touched"
+          class="text-danger mb-1 mt-1"
+        >
+          Email é obrigatório!!!
+        </div>
+        <div
+          *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].dirty"
+          class="text-danger mb-1 mt-1"
+        >
+          Email inválido!!
+        </div>
       </div>
       <div class="mb-4">
-        <label for="password" class="form-label">Senha*</label>
-        <input type="password" class="form-control" id="password" placeholder="Digite sua senha">
+        <label class="form-label">Senha*</label>
+        <input type="password" class="form-control" placeholder="Digite sua senha..." formControlName="password">
+        <div
+          *ngIf="loginForm.hasError('required', 'password') && loginForm.controls['password'].touched"
+          class="text-danger mb-1 mt-1"
+        >
+          Senha é obrigatório!!!
+        </div>
       </div>
       <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary btn-block justify-content-center">Entrar</button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-block justify-content-center position-relative"
+          [disabled]="loginForm.invalid"
+          (click)="send()"
+        >
+          Entrar
+          <div *ngIf="isLoading" class="text-light position-absolute end-0 top-50 translate-middle" role="status">
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          </div>
+        </button>
       </div>
     </form>
     <div class="text-center mt-3">
-      <p>Ainda não possui cadastro? <a href="#">Cadastrar</a></p>
+      <p>Ainda não possui cadastro? <a (click)="createNewUser()">Cadastrar</a></p>
     </div>
   </div>
 </div>
