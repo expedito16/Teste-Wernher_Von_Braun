@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr'
 
 import { LoginRoutingModule } from './login-routing.module';
 
@@ -20,8 +19,7 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    ToastrModule
+    HttpClientModule
   ]
 })
 export class LoginModule { }

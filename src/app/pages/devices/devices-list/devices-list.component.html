@@ -27,7 +27,7 @@
           <td class="align-middle text-wrap">{{ device.deviceManufacturer }}</td>
           <td class="text-center align-middle">
             <button class="btn btn-primary btn-sm me-1 mb-1 mb-sm-1">Editar</button>
-            <button class="btn btn-danger btn-sm mb-1 mb-sm-1">Excluir</button>
+            <button class="btn btn-danger btn-sm mb-1 mb-sm-1" (click)="deleteDevice($event, device.id)">Excluir</button>
           </td>
         </tr>
       </tbody>

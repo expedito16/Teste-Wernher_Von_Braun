@@ -55,34 +55,6 @@
       "model": "q",
       "deviceManufacturer": "q",
       "description": "q"
-    },
-    {
-      "id": "d8a3",
-      "deviceName": "eee",
-      "model": "eee",
-      "deviceManufacturer": "eee",
-      "description": "ee"
-    },
-    {
-      "id": "5d57",
-      "deviceName": "111",
-      "model": "11",
-      "deviceManufacturer": "111",
-      "description": "111"
-    },
-    {
-      "id": "a906",
-      "deviceName": "1",
-      "model": "1",
-      "deviceManufacturer": "1",
-      "description": "1"
-    },
-    {
-      "id": "ea30",
-      "deviceName": "2",
-      "model": "2",
-      "deviceManufacturer": "2",
-      "description": "2"
     }
   ]
 }

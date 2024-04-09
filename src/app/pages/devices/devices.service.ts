@@ -19,4 +19,8 @@ export class DevicesService {
   createNewDevice(newDevice: any): Observable<any> {
     return this.http.post(this.url, newDevice);
   }
+
+  deleteDeviceById(id: number): Observable<any>{
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
