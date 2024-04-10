@@ -1,36 +1,47 @@
 <section class="container">
-  <div class="text-end mb-3">
-    <button class="btn btn-success" (click)="newDevice()">Novo dispositivo</button>
-  </div>
-  <h2 class="text-center mb-5">Lista de dispositivos</h2>
-  <div *ngIf="isLoading" class="overlay d-flex justify-content-center align-items-center">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
+  <div class="grid-device">
+    <div class="text-end mb-4">
+      <button class="btn btn-success" (click)="newDevice()">Novo dispositivo</button>
     </div>
-  </div>
-  <div class="table-responsive text-center">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th class="text-center text-uppercase"><strong>Id</strong></th>
-          <th class="text-center text-uppercase"><strong>Nome do dispositivo</strong></th>
-          <th class="text-center text-uppercase"><strong>Modelo</strong></th>
-          <th class="text-center text-uppercase"><strong>Fabricante do dispositivo</strong></th>
-          <th class="text-center text-uppercase"><strong>Ações</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let device of devicesList">
-          <td class="text-center align-middle text-wrap">{{ device.id }}</td>
-          <td class="align-middle text-wrap">{{ device.deviceName }}</td>
-          <td class="align-middle text-wrap">{{ device.model }}</td>
-          <td class="align-middle text-wrap">{{ device.deviceManufacturer }}</td>
-          <td class="text-center align-middle">
-            <button class="btn btn-primary btn-sm me-1 mb-1 mb-sm-1" (click)="updateDevice(device.id)">Editar</button>
-            <button class="btn btn-danger btn-sm mb-1 mb-sm-1" (click)="deleteDevice($event, device.id)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h2 class="text-center mb-5">Lista de dispositivos</h2>
+    <div *ngIf="isLoading" class="overlay d-flex justify-content-center align-items-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card shadow p-3 mb-5 bg-body rounded">
+          <div class="table-responsive text-center">
+            <table class="table table-striped" *ngIf="devicesList.length > 0; else emptyList">
+              <thead>
+                <tr>
+                  <th class="text-center text-uppercase"><strong>Id</strong></th>
+                  <th class="text-center text-uppercase"><strong>Nome do dispositivo</strong></th>
+                  <th class="text-center text-uppercase"><strong>Modelo</strong></th>
+                  <th class="text-center text-uppercase"><strong>Fabricante do dispositivo</strong></th>
+                  <th class="text-center text-uppercase"><strong>Ações</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let device of devicesList">
+                  <td class="text-center align-middle text-wrap">{{ device.id }}</td>
+                  <td class="align-middle text-wrap">{{ device.deviceName }}</td>
+                  <td class="align-middle text-wrap">{{ device.model }}</td>
+                  <td class="align-middle text-wrap">{{ device.deviceManufacturer }}</td>
+                  <td class="text-center align-middle">
+                    <button class="btn btn-primary btn-sm me-1 mb-1 mb-sm-1" (click)="updateDevice(device.id)">Editar</button>
+                    <button class="btn btn-danger btn-sm mb-1 mb-sm-1" (click)="deleteDevice($event, device.id)">Excluir</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ng-template #emptyList class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <p class="text-center mt-5 text-lg text-uppercase"><strong>Nenhum dispositivo cadastrado até o momento!</strong></p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
