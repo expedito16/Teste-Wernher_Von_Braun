@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DevicesRoutingModule } from './devices-routing.module';
 
+//Module
+import { SharedModule } from 'src/app/shared/shared.module';
+
 //Components
 import { DevicesListComponent } from './devices-list/devices-list.component';
 import { CreateDeviceComponent } from './create-device/create-device.component';
@@ -21,7 +24,8 @@ import { UpdateDeviceComponent } from './update-device/update-device.component';
     CommonModule,
     DevicesRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ]
 })
 export class DevicesModule { }
