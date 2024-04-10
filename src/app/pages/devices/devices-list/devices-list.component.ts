@@ -32,6 +32,10 @@ export class DevicesListComponent implements OnInit {
     });
   }
 
+  updateDevice(id: number) {
+    this.router.navigate(['editar-dispositivo', id]);
+  }
+
   deleteDevice(event: any, id: number) {
     if (confirm('Deseja excluir o baralho ?')) {
       this.isLoading = true;

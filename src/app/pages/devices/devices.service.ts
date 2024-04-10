@@ -20,6 +20,14 @@ export class DevicesService {
     return this.http.post(this.url, newDevice);
   }
 
+  getDeviceById(id: number): Observable<any>{
+    return this.http.get(`${this.url}/${id}`);
+  }
+
+  updateDevice(id: number, device: any): Observable<any>{
+    return this.http.put(`${this.url}/${id}`, device);
+  }
+
   deleteDeviceById(id: number): Observable<any>{
     return this.http.delete(`${this.url}/${id}`);
   }

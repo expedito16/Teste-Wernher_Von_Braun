@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 //Components
 import { DevicesListComponent } from './devices-list/devices-list.component';
 import { CreateDeviceComponent } from './create-device/create-device.component';
+import { UpdateDeviceComponent } from './update-device/update-device.component';
 
 const routes: Routes = [
-  { path:'lista-dispositivos', component: DevicesListComponent },
-  { path:'criar-dispositivo', component: CreateDeviceComponent },
+  { path: 'lista-dispositivos', component: DevicesListComponent },
+  { path: 'criar-dispositivo', component: CreateDeviceComponent },
+  { path: 'editar-dispositivo/:id', component: UpdateDeviceComponent }
 ];
 
 @NgModule({

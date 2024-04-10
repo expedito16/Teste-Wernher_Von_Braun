@@ -8,12 +8,14 @@ import { DevicesRoutingModule } from './devices-routing.module';
 //Components
 import { DevicesListComponent } from './devices-list/devices-list.component';
 import { CreateDeviceComponent } from './create-device/create-device.component';
+import { UpdateDeviceComponent } from './update-device/update-device.component';
 
 
 @NgModule({
   declarations: [
     DevicesListComponent,
-    CreateDeviceComponent
+    CreateDeviceComponent,
+    UpdateDeviceComponent
   ],
   imports: [
     CommonModule,
