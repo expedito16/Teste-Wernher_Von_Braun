@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 
 //Components
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }
