@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-register-user',
@@ -11,7 +12,7 @@ import { LoginService } from '../login.service';
 export class RegisterUserComponent implements OnInit {
 newUserForm!: FormGroup;
 isLoading = false;
-listUsers: any[] = [];
+listUsers: User[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +42,7 @@ listUsers: any[] = [];
     if (this.newUserForm.valid) {
       this.isLoading = true;
 
-      this.loginService.listUsers().subscribe(data => {
+      this.loginService.listUsers().subscribe((data: User[]) => {
         this.listUsers = data;
         const userEmail = this.newUserForm.controls['email'].value;
         const listEmail = this.listUsers.filter((dados) => dados.email);
@@ -57,6 +58,9 @@ listUsers: any[] = [];
 
           this.loginService.createNewUser(newUser).subscribe(() => {
             this.router.navigate(['']);
+            this.isLoading = false;
+          }, (error) => {
+            console.log('Problema ao castrar novo usuário', error);
             this.isLoading = false;
           });
         }

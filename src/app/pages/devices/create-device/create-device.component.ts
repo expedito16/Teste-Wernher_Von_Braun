@@ -48,6 +48,10 @@ export class CreateDeviceComponent implements OnInit {
       this.devicesService.createNewDevice(newDevice).subscribe(() => {
         this.router.navigate(['lista-dispositivos']);
         this.isLoading = false;
+      },
+      (error) => {
+        console.log('Problema ao cadastrar novo dispositivo', error);
+        this.isLoading = false;
       });
     }
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../login/login.service';
+import { LoginService } from '../login/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -31,13 +31,14 @@ export class LoginComponent implements OnInit {
   }
 
   createNewUser() {
-    this.router.navigate(['cadastrar-usuario'])
+    this.router.navigate(['cadastrar-usuario']);
   }
 
   send() {
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.loginService.listUsers().subscribe(data => {
+        console.log('dados :', data);
         this.listUsers = data;
         const email = this.loginForm.controls['email'].value;
         const password = this.loginForm.controls['password'].value;
@@ -48,6 +49,9 @@ export class LoginComponent implements OnInit {
           alert("Email ou senha estão incorretos, tente novamente!!");
         }
         this.isLoading = false;
+      },
+      (error) => {
+        console.log('Problema na autenticação', error);
       });
     }
   }

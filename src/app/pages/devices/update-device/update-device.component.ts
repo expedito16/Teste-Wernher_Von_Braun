@@ -62,8 +62,8 @@ export class UpdateDeviceComponent implements OnInit {
           this.router.navigate(['lista-dispositivos']);
           this.isLoading = false;
         },
-        error => {
-          console.error(error);
+        (error) => {
+          console.log('Problema ao atualizar dispositivo', error);
           this.isLoading = false;
         });
     }

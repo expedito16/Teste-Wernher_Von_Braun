@@ -41,6 +41,20 @@
       "description": "O iPhone 13 Pro Max chama a atenção por ter câmera tripla de 12MP, mas vem com ainda mais avanços tecnológicos. Vem cá conhecer mais detalhes na Casas Bahia! O iPhone 13 Pro Max é o mais avançado celular da linha 13. Com uma tela Super Retina XDR de 6,7 polegadas, oferece imagens nítidas e vibrantes."
     },
     {
+      "id": "5bfb",
+      "deviceName": "teste",
+      "model": "teste",
+      "deviceManufacturer": "teste",
+      "description": "teste"
+    },
+    {
+      "id": "c7f4",
+      "deviceName": "teste",
+      "model": "teste",
+      "deviceManufacturer": "teste",
+      "description": "teste"
+    },
+    {
       "deviceName": "Galaxy S24 Ultra",
       "model": "Samsung",
       "deviceManufacturer": "Samsung",

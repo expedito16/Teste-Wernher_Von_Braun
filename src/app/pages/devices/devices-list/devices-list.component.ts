@@ -29,6 +29,9 @@ export class DevicesListComponent implements OnInit {
     this.devicesService.listDevices().subscribe((data) => {
       this.devicesList = data
       this.isLoading = false;
+    },
+    (error) => {
+      console.log('Problema ao carregar lista', error);
     });
   }
 
@@ -37,16 +40,15 @@ export class DevicesListComponent implements OnInit {
   }
 
   deleteDevice(event: any, id: number) {
-    if (confirm('Deseja excluir o baralho ?')) {
+    if (confirm('Deseja excluir o dispositivo ?')) {
       this.isLoading = true;
       event.target.innerText = "Deleting..."
       this.devicesService.deleteDeviceById(id).subscribe(() => {
         this.getDevicesList();
         event.target.innerText = "Deleted"
         this.isLoading = false;
-      }, error => {
-        console.error(error);
-        event.target.innerText = "Delete"
+      }, (error) => {
+        console.log('Problema ao tentar deletar', error);
         this.isLoading = false;
       });
     }

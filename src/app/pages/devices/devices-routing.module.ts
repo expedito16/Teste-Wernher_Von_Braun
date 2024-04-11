@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DevicesListComponent } from './devices-list/devices-list.component';
 import { CreateDeviceComponent } from './create-device/create-device.component';
 import { UpdateDeviceComponent } from './update-device/update-device.component';
+import { authGuard } from 'src/app/core/guard/auth-guard.guard';
 
 const routes: Routes = [
   { path: 'lista-dispositivos', component: DevicesListComponent },
